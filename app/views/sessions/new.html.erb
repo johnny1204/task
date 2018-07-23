@@ -1,0 +1,25 @@
+<section>
+  <%=form_with model: @session, url: session_path, type: :post, local: true do |form|%>
+    <%if @session && @session.errors%>
+      <ul>
+        <%@session.errors.full_messages.each do |message|%>
+          <li><%=message%></li>
+        <%end%>
+      </ul>
+    <%end%>
+    <ul>
+      <li>
+        <section>
+          <h2><%=form.label :email%><h2>
+          <%=form.email_field :email%>
+        </section>
+      </li>
+      <li>
+        <h2><%=form.label :password%><h2>
+        <%=form.password_field :password%>
+      </li>
+      <%=form.submit 'ログインする'%>
+    </ul>
+  <%end%>
+  <%= render template: "layouts/application" %>
+</section>
