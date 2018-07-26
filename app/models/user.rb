@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   before_save :password_encrypt
 
+  has_many :images
+
   class << self
     def encrypt(password)
       crypt = ActiveSupport::MessageEncryptor.new(ENV['RAILS_KEY_MASTER'], 'aes-256-cbc')

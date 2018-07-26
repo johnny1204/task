@@ -1,0 +1,18 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag  '/images/index', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<section>
+  <%= link_to "ログアウト", session_path, method: :delete %>
+  <h2>写真一覧</h2>
+  <%= link_to '写真を新規にアップロード', new_image_path %>
+  <ul class="imageList">
+  <%@images.each do |image|%>
+    <li class="imageList-inner">
+      <section class="imageList-inner-item">
+        <h3 class="imageList-inner-itemTitle"><%=image.title%></h3>
+        <%=image_tag image.image_path, class: 'imageList-inner-itemImage'%>
+      </section>
+    </li>
+  <%end%>
+  </ul>
+</section>

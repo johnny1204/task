@@ -1,0 +1,13 @@
+<section class="image-uploadContainer">
+  <%=form_with model: @image, url: images_path, type: :post, local: true do |form|%>
+    <%=form.label :title%>
+    <%=form.text_field :title%>
+    <%=form.label :file%>
+    <%=form.file_field :file%>
+    <div class="image-submitButton">
+      <%=form.submit 'アップロード'%>
+    </div>
+  <%end%>
+  <%= link_to "キャンセル", images_path %>
+  <%= render template: "layouts/application" %>
+</section>
