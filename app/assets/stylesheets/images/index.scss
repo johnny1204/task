@@ -1,9 +1,7 @@
 .imageList >li{
   display: inline-block;
 }
-.imageList-inner-item{
-  >img{
-    max-width: 250px;
-    max-height: 150px;
-  }
+.imageList-inner-itemImage{
+  max-width: 250px;
+  max-height: 150px;
 }

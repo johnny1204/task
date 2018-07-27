@@ -1,13 +1,23 @@
-<section class="image-uploadContainer">
-  <%=form_with model: @image, url: images_path, type: :post, local: true do |form|%>
-    <%=form.label :title%>
-    <%=form.text_field :title%>
-    <%=form.label :file%>
-    <%=form.file_field :file%>
-    <div class="image-submitButton">
-      <%=form.submit 'アップロード'%>
-    </div>
-  <%end%>
-  <%= link_to "キャンセル", images_path %>
-  <%= render template: "layouts/application" %>
-</section>
+<main class="mainContainer">
+  <h1>写真アップロード</h1>
+  <div class="mainContainer-inner">
+    <ul>
+      <%@image.errors.full_messages.each do |message|%>
+        <li><%=message%></li>
+      <%end%>
+    </ul>
+    <%=form_with model: @image, url: images_path, type: :post, local: true do |form|%>
+      <section>
+        <h2><%=form.label :title%></h2>
+        <%=form.text_field :title%>
+        <h2><%=form.label :file%></h2>
+        <%=form.file_field :file%>
+      </section>
+      <ul class="buttons">
+        <li><%=form.submit 'アップロード'%></li>
+        <li><%= link_to "キャンセル", images_path %></li>
+      </ul>
+    <%end%>
+    <%= render template: "layouts/application" %>
+  </div>
+</main>

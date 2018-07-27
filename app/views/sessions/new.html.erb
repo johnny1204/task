@@ -1,12 +1,11 @@
-<section>
-  <%=form_with model: @session, url: session_path, type: :post, local: true do |form|%>
-    <%if @session && @session.errors%>
-      <ul>
-        <%@session.errors.full_messages.each do |message|%>
-          <li><%=message%></li>
-        <%end%>
-      </ul>
+<main class="mainContainer">
+  <h1>ログイン</h1>
+  <ul>
+    <%@session.errors.full_messages.each do |message|%>
+      <li><%=message%></li>
     <%end%>
+  </ul>
+  <%=form_with model: @session, url: session_path, type: :post, local: true do |form|%>
     <ul>
       <li>
         <section>
@@ -22,4 +21,4 @@
     </ul>
   <%end%>
   <%= render template: "layouts/application" %>
-</section>
+</main>
