@@ -1,3 +1,5 @@
+require 'net/http'
+require 'uri'
 class ImagesController < ApplicationController
   before_action :check_login
 
@@ -17,6 +19,20 @@ class ImagesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def tweet
+    uri = URI.parse('https://arcane-ravine-29792.herokuapp.com/api/tweets')
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+
+    request = Net::HTTP::Post.new(uri.path)
+    request['Content-Type'] = 'application/json'
+    request['Authorization'] = "Bearer #{session[:access_token]}"
+
+    image = Image.find(params[:id])
+    request.body = JSON.generate({ text: image.title, url: "http://localhost:3000#{image.image_path}"})
+    response = http.request(request)
   end
 
   private

@@ -1,0 +1,12 @@
+ja:
+ activerecord:
+    models:
+      image: 画像
+      session: セッション
+    attributes:
+      image:
+        title: タイトル
+        file: ファイル
+      session:
+        email: メールアドレス
+        password: パスワード

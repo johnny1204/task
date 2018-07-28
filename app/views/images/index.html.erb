@@ -3,6 +3,7 @@
 <% end %>
 <main>
   <%= link_to "ログアウト", session_path, method: :delete %>
+  <%= link_to  "MyTweetAppと連携", "https://arcane-ravine-29792.herokuapp.com/oauth/authorize?client_id=#{ENV['OAUTH_CLIENT_ID']}&response_type=code&redirect_uri=http://localhost:3000/oauth/callback" %>
   <h1>写真一覧</h1>
   <%= link_to '写真を新規にアップロード', new_image_path %>
   <ul class="imageList">
@@ -11,6 +12,7 @@
       <section class="imageList-inner-item">
         <h2 class="imageList-inner-itemTitle"><%=image.title%></h2>
         <%=image_tag image.image_path, class: 'imageList-inner-itemImage'%>
+        <%= link_to "tweet", tweet_image_path(id: image.id), remote: true %> 
       </section>
     </li>
   <%end%>
