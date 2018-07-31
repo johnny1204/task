@@ -2,7 +2,7 @@ class Image < ApplicationRecord
   TITLE_LENGTH = 30
 
   validates :title, presence: true, length: { maximum: TITLE_LENGTH }
-  validates :file, presence: true
+  validates :file, presence: { message: 'が選択されていません' }
 
   belongs_to :user
 

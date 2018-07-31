@@ -1,5 +1,8 @@
 ja:
- activerecord:
+  errors:
+    messages:
+      blank: "を入力してください。"
+  activerecord:
     models:
       image: 画像
       session: セッション
@@ -7,6 +10,8 @@ ja:
       image:
         title: タイトル
         file: ファイル
+  activemodel:
+    attributes:
       session:
-        email: メールアドレス
+        email: ログインID
         password: パスワード
